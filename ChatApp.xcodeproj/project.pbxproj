@@ -16,6 +16,8 @@
 		E5716EA52699DA2700789633 /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5716EA42699DA2700789633 /* SettingsHeaderView.swift */; };
 		E5716EA72699DAEF00789633 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5716EA62699DAEF00789633 /* SettingsCell.swift */; };
 		E59974D9269AEE230096C96E /* SettingsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59974D8269AEE230096C96E /* SettingsCellViewModel.swift */; };
+		E5BDA69326A457DD00B241C5 /* StatusSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BDA69226A457DD00B241C5 /* StatusSelectorView.swift */; };
+		E5BDA69526A46A0800B241C5 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5BDA69426A46A0800B241C5 /* StatusViewModel.swift */; };
 		E5DF6D2C269AF48C00C4D112 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DF6D2B269AF48C00C4D112 /* EditProfileView.swift */; };
 		E5F552CF2693483B004149BF /* ChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F552CE2693483B004149BF /* ChatAppApp.swift */; };
 		E5F552D12693483B004149BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F552D02693483B004149BF /* ContentView.swift */; };
@@ -54,6 +56,8 @@
 		E5716EA42699DA2700789633 /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
 		E5716EA62699DAEF00789633 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		E59974D8269AEE230096C96E /* SettingsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCellViewModel.swift; sourceTree = "<group>"; };
+		E5BDA69226A457DD00B241C5 /* StatusSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusSelectorView.swift; sourceTree = "<group>"; };
+		E5BDA69426A46A0800B241C5 /* StatusViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		E5DF6D2B269AF48C00C4D112 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		E5F552CB2693483B004149BF /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5F552CE2693483B004149BF /* ChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppApp.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				E5716EA42699DA2700789633 /* SettingsHeaderView.swift */,
 				E5716EA62699DAEF00789633 /* SettingsCell.swift */,
 				E5DF6D2B269AF48C00C4D112 /* EditProfileView.swift */,
+				E5BDA69226A457DD00B241C5 /* StatusSelectorView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				E59974D8269AEE230096C96E /* SettingsCellViewModel.swift */,
+				E5BDA69426A46A0800B241C5 /* StatusViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -383,7 +389,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5BDA69526A46A0800B241C5 /* StatusViewModel.swift in Sources */,
 				E5DF6D2C269AF48C00C4D112 /* EditProfileView.swift in Sources */,
+				E5BDA69326A457DD00B241C5 /* StatusSelectorView.swift in Sources */,
 				E5716EA52699DA2700789633 /* SettingsHeaderView.swift in Sources */,
 				E5F5530026934996004149BF /* LoginView.swift in Sources */,
 				E59974D9269AEE230096C96E /* SettingsCellViewModel.swift in Sources */,
