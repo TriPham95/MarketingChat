@@ -8,9 +8,45 @@
 import SwiftUI
 
 struct ConversationsView: View {
+    @State private var showNewMessageView = false
+    @State private var showChatView = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .navigationTitle("Chats")
+        ZStack(alignment: .bottomTrailing) {
+            
+            NavigationLink(
+                destination: ChatView(),
+                isActive: $showChatView,
+                label: { })
+            
+            
+            
+            
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach((0...10), id: \.self) { _ in
+                        ConversationCell()
+                    }
+                }
+            }
+            
+            Button(action: {
+                showNewMessageView.toggle()
+            }, label: {
+                Image(systemName: "square.and.pencil")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 24, height: 24)
+                    .padding()
+                
+            })
+            .background(Color(.systemBlue))
+            .foregroundColor(.white)
+            .clipShape(Circle())
+            .padding()
+            .sheet(isPresented: $showNewMessageView, content: {
+                NewMessageView(showChatView: $showChatView)
+            })
+        }
     }
 }
 
