@@ -6,8 +6,13 @@
 //
 
 import Firebase
+import UIKit
 
 class AuthViewModel: NSObject, ObservableObject {
+    @Published var didAuthenticateUser = false
+    private var tempCurrentUser : FirebaseAuth.User?
+    
+    
     func login() {
         print("Login...")
     }
@@ -19,11 +24,32 @@ class AuthViewModel: NSObject, ObservableObject {
                 print("DEBUG: Failed to register with error: \(error.localizedDescription)")
                 return
             }
+            
+            guard let user = result?.user else { return }
+            
+            
+            let data: [String: Any] = ["email": email,
+                                       "username": username,
+                                       "fullname": fullname]
+            
+            Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
+                self.tempCurrentUser = user
+                self.didAuthenticateUser = true
+                
+            }
         }
         
     }
     
-    func uploadProfileImage() {
+    func uploadProfileImage(_ image: UIImage) {
+        guard let uid = tempCurrentUser?.uid else { return }
+        ImageUploader.uploadImage(image: image) { imageUrl in
+            Firestore.firestore().collection("users").document(uid).updateData(
+                ["profileImageUrl" : imageUrl]) { _ in
+                print("Successfully update user data..")
+                
+            }
+        }
         
     
     }
