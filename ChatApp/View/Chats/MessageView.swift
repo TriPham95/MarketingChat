@@ -10,6 +10,7 @@ import SwiftUI
 struct MessageView: View {
     var isFromCurrentUser: Bool
     var messageText: String
+    let viewModel: MessageViewModel
     
     var body: some View {
         HStack {
