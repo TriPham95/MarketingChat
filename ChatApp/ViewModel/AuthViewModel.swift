@@ -10,11 +10,30 @@ import UIKit
 
 class AuthViewModel: NSObject, ObservableObject {
     @Published var didAuthenticateUser = false
-    private var tempCurrentUser : FirebaseAuth.User?
+    @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
+    private var tempCurrentUser: FirebaseAuth.User?
     
     
-    func login() {
-        print("Login...")
+    static let shared = AuthViewModel()
+    
+    override init() {
+        super.init()
+        
+        userSession = Auth.auth().currentUser
+        fetchUser()
+    }
+    
+    
+    func login(withEmail email: String, password: String) {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG: Failed to sign in with error: \(error.localizedDescription)")
+                return      
+            }
+            self.userSession = result?.user
+            self.fetchUser()
+        }
     }
     
     func register(withEmail email: String, password: String, fullname: String, username: String) {
@@ -27,7 +46,6 @@ class AuthViewModel: NSObject, ObservableObject {
             
             guard let user = result?.user else { return }
             
-            
             let data: [String: Any] = ["email": email,
                                        "username": username,
                                        "fullname": fullname]
@@ -35,10 +53,8 @@ class AuthViewModel: NSObject, ObservableObject {
             Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
                 self.tempCurrentUser = user
                 self.didAuthenticateUser = true
-                
             }
         }
-        
     }
     
     func uploadProfileImage(_ image: UIImage) {
@@ -46,16 +62,25 @@ class AuthViewModel: NSObject, ObservableObject {
         ImageUploader.uploadImage(image: image) { imageUrl in
             Firestore.firestore().collection("users").document(uid).updateData(
                 ["profileImageUrl" : imageUrl]) { _ in
-                print("Successfully update user data..")
-                
+                self.userSession = self.tempCurrentUser
             }
         }
-        
-    
     }
     
     func logout() {
+        self.userSession = nil
+        try? Auth.auth().signOut()
+    }
+    
+    func fetchUser() {
+        guard let uid = userSession?.uid else { return }
         
-        
+        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
+//            guard let data = snapshot?.data() else { return }
+            
+            guard let user = try? snapshot?.data(as: User.self) else { return }
+            self.currentUser = user
+            
+        }
     }
 }
