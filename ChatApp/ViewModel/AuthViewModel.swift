@@ -50,7 +50,7 @@ class AuthViewModel: NSObject, ObservableObject {
                                        "username": username,
                                        "fullname": fullname]
             
-            Firestore.firestore().collection("users").document(user.uid).setData(data) { _ in
+            COLLECTION_USERS.document(user.uid).setData(data) { _ in
                 self.tempCurrentUser = user
                 self.didAuthenticateUser = true
             }
@@ -60,7 +60,7 @@ class AuthViewModel: NSObject, ObservableObject {
     func uploadProfileImage(_ image: UIImage) {
         guard let uid = tempCurrentUser?.uid else { return }
         ImageUploader.uploadImage(image: image) { imageUrl in
-            Firestore.firestore().collection("users").document(uid).updateData(
+            COLLECTION_USERS.document(uid).updateData(
                 ["profileImageUrl" : imageUrl]) { _ in
                 self.userSession = self.tempCurrentUser
             }
@@ -75,7 +75,7 @@ class AuthViewModel: NSObject, ObservableObject {
     func fetchUser() {
         guard let uid = userSession?.uid else { return }
         
-        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, _ in
+        COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
 //            guard let data = snapshot?.data() else { return }
             
             guard let user = try? snapshot?.data(as: User.self) else { return }

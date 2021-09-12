@@ -15,6 +15,8 @@
 		E513427026ECF0C700C4C140 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E513426F26ECF0C700C4C140 /* FirebaseAuth */; };
 		E513427226ECF0C700C4C140 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E513427126ECF0C700C4C140 /* FirebaseFirestore */; };
 		E513427526ED012D00C4C140 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E513427426ED012D00C4C140 /* Kingfisher */; };
+		E5318E4026EE324D00A49BA0 /* NewMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5318E3F26EE324D00A49BA0 /* NewMessageViewModel.swift */; };
+		E5318E4226EE331400A49BA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5318E4126EE331400A49BA0 /* Constants.swift */; };
 		E534CE2C26E3AD600075A704 /* ProfilePhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E534CE2B26E3AD600075A704 /* ProfilePhotoSelectorView.swift */; };
 		E534CE2E26E3B9780075A704 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E534CE2D26E3B9780075A704 /* ImageUploader.swift */; };
 		E548A0C826C809580043C121 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = E548A0C726C809580043C121 /* ChatBubble.swift */; };
@@ -71,6 +73,8 @@
 /* Begin PBXFileReference section */
 		E504902626D3CF8A00A59084 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		E513426626ECEEE700C4C140 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E5318E3F26EE324D00A49BA0 /* NewMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageViewModel.swift; sourceTree = "<group>"; };
+		E5318E4126EE331400A49BA0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E534CE2B26E3AD600075A704 /* ProfilePhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorView.swift; sourceTree = "<group>"; };
 		E534CE2D26E3B9780075A704 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		E548A0C726C809580043C121 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 				E5BDA69426A46A0800B241C5 /* StatusViewModel.swift */,
 				E504902626D3CF8A00A59084 /* ChatViewModel.swift */,
 				E551C65226E2676B00B6FDA4 /* AuthViewModel.swift */,
+				E5318E3F26EE324D00A49BA0 /* NewMessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				E5716E922699C0B000789633 /* CustomTextField.swift */,
 				E5E7769126C800D100A3E1AB /* SearchBar.swift */,
 				E5E7769326C806B600A3E1AB /* Extension.swift */,
+				E5318E4126EE331400A49BA0 /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -477,6 +483,7 @@
 				E5716EA72699DAEF00789633 /* SettingsCell.swift in Sources */,
 				E504902726D3CF8A00A59084 /* ChatViewModel.swift in Sources */,
 				E5716E9D2699D0A900789633 /* SettingsView.swift in Sources */,
+				E5318E4026EE324D00A49BA0 /* NewMessageViewModel.swift in Sources */,
 				E548A0CA26C80B880043C121 /* MessageView.swift in Sources */,
 				E5716E9B2699D07200789633 /* ChannelsView.swift in Sources */,
 				E5716EA32699D13A00789633 /* ConversationsView.swift in Sources */,
@@ -484,6 +491,7 @@
 				E5F552D12693483B004149BF /* ContentView.swift in Sources */,
 				E5E7769226C800D100A3E1AB /* SearchBar.swift in Sources */,
 				E5E7769426C806B600A3E1AB /* Extension.swift in Sources */,
+				E5318E4226EE331400A49BA0 /* Constants.swift in Sources */,
 				E534CE2C26E3AD600075A704 /* ProfilePhotoSelectorView.swift in Sources */,
 				E548A0CC26C8119A0043C121 /* CustomInputView.swift in Sources */,
 				E5F552CF2693483B004149BF /* ChatAppApp.swift in Sources */,

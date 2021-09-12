@@ -23,7 +23,7 @@ struct ProfilePhotoSelectorView: View {
                         .frame(width: 180, height: 180)
                         .clipShape(Circle())
                 } else {
-                    Image("INCOM.png")
+                    Image(systemName: "plus.circle")
                         .resizable()
                         .renderingMode(.template)
                         .scaledToFill()
