@@ -41,21 +41,25 @@ struct RegistrationView: View {
                                     placeholderName: "Email",
                                     isSecureField: false,
                                     text: $email)
+                        .autocapitalization(.none)
                     
                     CustomTextField(imageName: "person",
                                     placeholderName: "Username",
                                     isSecureField: false,
                                     text: $username)
+                        .autocapitalization(.none)
                     
                     CustomTextField(imageName: "person",
                                     placeholderName: "Full Name",
                                     isSecureField: false,
                                     text: $fullname)
+                        .autocapitalization(.none)
                     
                     CustomTextField(imageName: "lock",
                                     placeholderName: "Password",
                                     isSecureField: true,
                                     text: $password)
+                        .autocapitalization(.none)
                 }
                 .padding([.top, .horizontal], 32)
             }

@@ -32,11 +32,14 @@ struct LoginView: View {
                                         placeholderName: "Email",
                                         isSecureField: false,
                                         text: $email)
+                            .autocapitalization(.none)
+
                         
                         CustomTextField(imageName: "lock",
                                         placeholderName: "Password",
                                         isSecureField: true,
                                         text: $password)
+                            .autocapitalization(.none)
                         
                     }
                     .padding([.top, .horizontal], 32)
@@ -90,6 +93,9 @@ struct LoginView: View {
             }
         }
         .padding(.top, -56)
+        .navigationViewStyle(StackNavigationViewStyle())
+
+        
     }
 }
 
