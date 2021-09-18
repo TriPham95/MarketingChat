@@ -14,12 +14,7 @@ struct User: Identifiable, Decodable {
     let fullname: String
     let profileImageURL: String
     
-//    init(_ dictionary: [String: Any]) {
-//        self.username = dictionary["username"] as? String ?? ""
-//        self.email = dictionary["email"] as? String ?? ""
-//        self.fullname = dictionary["fullname"] as? String ?? ""
-//        self.profileImageURL = dictionary["profileImageURL"] as? String ?? ""
-//    }
+
     
 }
 
@@ -27,3 +22,11 @@ let MOCK_USER = User(id: "1234",
                      email: "test",
                      username: "Tho",
                      fullname: "Tho Pham", profileImageURL: "INCOM.png")
+
+
+//    init(_ dictionary: [String: Any]) {
+//        self.username = dictionary["username"] as? String ?? ""
+//        self.email = dictionary["email"] as? String ?? ""
+//        self.fullname = dictionary["fullname"] as? String ?? ""
+//        self.profileImageURL = dictionary["profileImageURL"] as? String ?? ""
+//    }

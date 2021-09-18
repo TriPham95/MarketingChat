@@ -75,7 +75,6 @@ class AuthViewModel: NSObject, ObservableObject {
         guard let uid = userSession?.uid else { return }
         
         COLLECTION_USERS.document(uid).getDocument { snapshot, _ in
-//            guard let data = snapshot?.data() else { return }
             
             guard let user = try? snapshot?.data(as: User.self) else { return }
             self.currentUser = user

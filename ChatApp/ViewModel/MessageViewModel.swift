@@ -10,6 +10,10 @@ import Foundation
 struct MessageViewModel {
     let message: Message
     
+    init(_ message: Message) {
+        self.message = message
+    }
+    
     var currentUid: String {
         return AuthViewModel.shared.userSession?.uid ?? ""
     }
@@ -17,5 +21,11 @@ struct MessageViewModel {
     var isFromCurrentUser: Bool {
         return message.fromId == currentUid
     }
+    
+    var profileImageUrl: URL? {
+        guard let profileImageUrl = message.user?.profileImageURL else { return nil }
+        return URL(string: profileImageUrl)
+    }
+    
     
 }

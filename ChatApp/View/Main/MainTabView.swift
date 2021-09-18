@@ -37,13 +37,9 @@ struct MainTabView: View {
                         .tag(2)
                 }
                 .navigationTitle(tabTitle)
-                
-                // tab view
-                // each view for tab
             }
             .navigationViewStyle(StackNavigationViewStyle())
-        } else {
-            // show failed to load or empty state view
+        } else {            // show failed to load or empty state view
         }
     }
     
@@ -58,8 +54,3 @@ struct MainTabView: View {
     }
 }
 
-struct MainTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabView()
-    }
-}

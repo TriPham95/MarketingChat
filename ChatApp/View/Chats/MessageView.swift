@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct MessageView: View {
 //    var isFromCurrentUser: Bool
@@ -28,7 +29,7 @@ struct MessageView: View {
                 
             } else {
                 HStack(alignment: .bottom) {
-                    Image("INCOM")
+                    KFImage(viewModel.profileImageUrl)
                         .resizable()
                         .scaledToFill()
                         .frame(width: 32, height: 32)
@@ -47,7 +48,6 @@ struct MessageView: View {
                 
                 Spacer()
             }
-            
         }
     }
 }
