@@ -7,26 +7,44 @@
 
 import FirebaseFirestoreSwift
 
-struct User: Identifiable, Decodable {
+struct User: Identifiable, Hashable, Decodable {
     @DocumentID var id: String?
-    let email: String
     let username: String
-    let fullname: String
-    let profileImageURL: String
+    let email: String
+    var profileImageUrl: String
+    var fullname: String
+    var status: UserStatus
+    var fcmToken: String?
     
-
-    
+    var isCurrentUser: Bool { return AuthViewModel.shared.userSession?.uid == id }
 }
 
-let MOCK_USER = User(id: "1234",
-                     email: "test",
-                     username: "Tho",
-                     fullname: "Tho Pham", profileImageURL: "INCOM.png")
-
-
-//    init(_ dictionary: [String: Any]) {
-//        self.username = dictionary["username"] as? String ?? ""
-//        self.email = dictionary["email"] as? String ?? ""
-//        self.fullname = dictionary["fullname"] as? String ?? ""
-//        self.profileImageURL = dictionary["profileImageURL"] as? String ?? ""
-//    }
+enum UserStatus: Int, CaseIterable, Codable {
+    case notConfigured
+    case available
+    case busy
+    case school
+    case movies
+    case work
+    case batteryLow
+    case meeting
+    case gym
+    case sleeping
+    case urgentCallsOnly
+    
+    var description: String {
+        switch self {
+        case .notConfigured: return "Click here to update your status"
+        case .available: return "Available"
+        case .busy: return "Busy"
+        case .school: return "At school"
+        case .movies: return "At the movies"
+        case .work: return "At work"
+        case .batteryLow: return "Battery about to die"
+        case .meeting: return "In a meeting"
+        case .gym: return "At the gym"
+        case .sleeping: return "Sleeping"
+        case .urgentCallsOnly: return "Urgent calls only"
+        }
+    }
+}
