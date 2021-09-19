@@ -7,45 +7,44 @@
 
 import SwiftUI
 
-struct ProfilePhotoSelectorView: View {
-    @State private var ImagePickerPresented = false
+struct ProfilePhotoSelectView: View {
+    @State private var imagePickerPresented = false
     @State private var selectedImage: UIImage?
-    @State private  var profileImage: Image?
+    @State private var profileImage: Image?
     @EnvironmentObject var viewModel: AuthViewModel
-    
+
     var body: some View {
         VStack {
-            Button(action: { ImagePickerPresented.toggle() }, label: {
-                if let profileImage = profileImage{
-                    profileImage
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 180, height: 180)
-                        .clipShape(Circle())
-                } else {
-                    Image(systemName: "plus.circle")
-                        .resizable()
-                        .renderingMode(.template)
-                        .scaledToFill()
-                        .frame(width: 180, height: 180)
-                        .clipped()
-                        .padding(.top, 44)
-                        .foregroundColor(.black)
+            Button(action: { imagePickerPresented.toggle() }, label: {
+                ZStack {
+                    if let profileImage = profileImage {
+                        profileImage
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 180, height: 180)
+                            .clipShape(Circle())
+                    } else {
+                        Image(systemName: "plus_circle")
+                            .resizable()
+                            .renderingMode(.template)
+                            .scaledToFill()
+                            .frame(width: 180, height: 180)
+                            .clipped()
+                            .padding(.top, 44)
+                            .foregroundColor(.black)
+                    }
                 }
             })
-            .sheet(isPresented: $ImagePickerPresented,
-                   onDismiss: loadImage, content: {
+            .sheet(isPresented: $imagePickerPresented, onDismiss: loadImage, content: {
                 ImagePicker(image: $selectedImage)
             })
+            .padding()
             
-            Text(profileImage == nil ? "Select a profile photo" :
-            "Great! Tap below to continue")
+            Text(profileImage == nil ? "Select a profile photo" : "Great! Tap below to continue")
                 .font(.system(size: 20, weight: .semibold))
             
-            if let image = selectedImage {
-                Button(action: {
-                    viewModel.uploadProfileImage(image) // profileImage
-                }, label: {
+            if let selectedImage = selectedImage {
+                Button(action: { viewModel.uploadProfileImage(selectedImage) }, label: {
                     Text("Continue")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -53,9 +52,7 @@ struct ProfilePhotoSelectorView: View {
                         .background(Color.blue)
                         .clipShape(Capsule())
                         .padding()
-
                 })
-                .shadow(color: .gray, radius: 10, x: 0.0, y: 0.0)
                 .padding(.top, 24)
             }
             
@@ -63,17 +60,11 @@ struct ProfilePhotoSelectorView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
-    
+}
+
+extension ProfilePhotoSelectView {
     func loadImage() {
         guard let selectedImage = selectedImage else { return }
         profileImage = Image(uiImage: selectedImage)
-    }
-}
-
-
-
-struct ProfilePhotoSelectorView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfilePhotoSelectorView()
     }
 }

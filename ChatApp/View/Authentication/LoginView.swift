@@ -6,48 +6,50 @@
 //
 
 import SwiftUI
+import ProgressHUD
 
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     @EnvironmentObject var viewModel: AuthViewModel
+    @State private var showProgressHUD = true
     
     var body: some View {
         NavigationView {
             VStack {
+                
                 VStack(alignment: .leading, spacing: 12) {
                     HStack { Spacer() }
                     
-                    Text("Hello!")
+                    Text("Hello.")
                         .font(.largeTitle)
                         .bold()
                     
-                    Text("Welcome Back!")
+                    Text("Welcome Back")
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.blue)
-                    
-                    VStack(spacing: 40) {
-                        CustomTextField(imageName: "envelope",
-                                        placeholderName: "Email",
-                                        isSecureField: false,
-                                        text: $email)
-                            .autocapitalization(.none)
 
-                        
-                        CustomTextField(imageName: "lock",
-                                        placeholderName: "Password",
-                                        isSecureField: true,
-                                        text: $password)
-                            .autocapitalization(.none)
-                        
-                    }
-                    .padding([.top, .horizontal], 32)
-                    
-                    
                 }
                 .padding(.leading)
-                
+                .padding(.bottom, 32)
+                                    
+                VStack(spacing: 20) {
+                    CustomTextField(text: $email, placeholder: Text("Email"), imageName: "envelope")
+                        .padding()
+                        .background(Color.clear)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 32)
+                        .autocapitalization(.none)
+                    
+                    CustomSecureField(placeholder: Text("Password"), text: $password)
+                        .padding()
+                        .background(Color.clear)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 32)
+                        .autocapitalization(.none)
+                }
+                                    
                 HStack {
                     Spacer()
                     
@@ -55,13 +57,12 @@ struct LoginView: View {
                         destination: Text("Reset Password.."),
                         label: {
                             Text("Forgot Password?")
-                                .font(.system(size: 13,
-                                              weight: .semibold))
+                                .font(.system(size: 13, weight: .semibold))
                                 .padding(.top)
                                 .padding(.trailing, 28)
                         })
                 }
-                
+                                    
                 Button(action: {
                     viewModel.login(withEmail: email, password: password)
                 }, label: {
@@ -78,24 +79,19 @@ struct LoginView: View {
                 Spacer()
                 
                 NavigationLink(
-                    destination: RegistrationView()
-                        .navigationBarBackButtonHidden(true),
+                    destination: RegistrationView().navigationBarBackButtonHidden(true),
                     label: {
                         HStack {
-                            
                             Text("Don't have an account?")
                                 .font(.system(size: 14))
                             
                             Text("Sign Up")
                                 .font(.system(size: 14, weight: .semibold))
-                        }
-                    }).padding(.bottom, 32)
+                        }.foregroundColor(.blue)
+                    }).padding(.bottom, 16)
             }
+            .padding(.top, -56)
         }
-        .padding(.top, -56)
-        .navigationViewStyle(StackNavigationViewStyle())
-
-        
     }
 }
 
@@ -104,5 +100,6 @@ struct LoginView_Previews: PreviewProvider {
         LoginView()
     }
 }
+
 
 

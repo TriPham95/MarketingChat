@@ -9,91 +9,106 @@ import SwiftUI
 
 struct RegistrationView: View {
     @State private var email = ""
-    @State private var password = ""
     @State private var fullname = ""
     @State private var username = ""
+    @State private var password = ""
+    @State private var selectedImage: UIImage?
+    @State private var image: Image?
+    @State private var showImageSelectorView = false
     @Environment(\.presentationMode) var mode
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         VStack {
-            
-            NavigationLink(
-                destination: ProfilePhotoSelectorView().navigationBarBackButtonHidden(true),
-                isActive: $viewModel.didAuthenticateUser,
-                label: {})
-            
+            NavigationLink(destination: ProfilePhotoSelectView(),
+                           isActive: $viewModel.didRegister,
+                           label: {} )
             
             VStack(alignment: .leading, spacing: 12) {
                 HStack { Spacer() }
                 
-                Text("Get Started")
+                Text("Get started.")
                     .font(.largeTitle)
                     .bold()
                 
-                Text("Create Your Account")
+                Text("Create your account.")
                     .font(.largeTitle)
                     .bold()
                     .foregroundColor(.blue)
-                
-                VStack(spacing: 32) {
-                    CustomTextField(imageName: "envelope",
-                                    placeholderName: "Email",
-                                    isSecureField: false,
-                                    text: $email)
-                        .autocapitalization(.none)
-                    
-                    CustomTextField(imageName: "person",
-                                    placeholderName: "Username",
-                                    isSecureField: false,
-                                    text: $username)
-                        .autocapitalization(.none)
-                    
-                    CustomTextField(imageName: "person",
-                                    placeholderName: "Full Name",
-                                    isSecureField: false,
-                                    text: $fullname)
-                        .autocapitalization(.none)
-                    
-                    CustomTextField(imageName: "lock",
-                                    placeholderName: "Password",
-                                    isSecureField: true,
-                                    text: $password)
-                        .autocapitalization(.none)
-                }
-                .padding([.top, .horizontal], 32)
             }
             .padding(.leading)
-            
-            Button(action: {
-                viewModel.register(withEmail: email, password: password,
-                                   fullname: fullname, username: username)
-            }, label: {
-                Text("Sign Up")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(width: 340, height: 50)
-                    .background(Color.blue)
-                    .clipShape(Capsule())
-                    .padding()
-            })
-            .padding(.top, 24)
-            .shadow(color: .gray, radius: 10, x: 0.0, y: 0.0)
-            
-            Spacer()
-            
-            Button(action: { mode.wrappedValue.dismiss() } , label: {
-                HStack {
-                    
-                    Text("Already have an account?")
-                        .font(.system(size: 14))
-                    
-                    Text("Sign In")
-                        .font(.system(size: 14, weight: .semibold))
-                }
-            })
             .padding(.bottom, 32)
+            
+            VStack {
+                VStack(spacing: 20) {
+                    CustomTextField(text: $email, placeholder: Text("Email"), imageName: "envelope")
+                        .padding()
+                        .cornerRadius(10)
+                        .padding(.horizontal, 32)
+                        .autocapitalization(.none)
+                    
+                    CustomTextField(text: $username, placeholder: Text("Username"), imageName: "person")
+                        .padding()
+                        .cornerRadius(10)
+                        .padding(.horizontal, 32)
+                        .autocapitalization(.none)
+                    
+                    CustomTextField(text: $fullname, placeholder: Text("Full Name"), imageName: "person")
+                        .padding()
+                        .background(Color(.init(white: 1, alpha: 0.15)))
+                        .cornerRadius(10)
+                        .padding(.horizontal, 32)
+                        .autocapitalization(.none)
+                    
+                    CustomSecureField(placeholder: Text("Password"), text: $password)
+                        .padding()
+                        .cornerRadius(10)
+                        .padding(.horizontal, 32)
+                        .autocapitalization(.none)
+                }
+                
+                Button(action: {
+                    viewModel.register(withEmail: email,
+                                       password: password,
+                                       fullname: fullname,
+                                       username: username)
+                }, label: {
+                    Text("Sign Up")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(width: 340, height: 50)
+                        .background(Color.blue)
+                        .clipShape(Capsule())
+                        .padding()
+                })
+                .shadow(color: .gray, radius: 10, x: 0.0, y: 0.0)
+                
+                Spacer()
+                
+                Button(action: { mode.wrappedValue.dismiss() }, label: {
+                    HStack {
+                        Text("Already have an account?")
+                            .font(.system(size: 14))
+                        
+                        Text("Sign In")
+                            .font(.system(size: 14, weight: .semibold))
+                    }
+                    .foregroundColor(.blue)
+                    .padding(.bottom, 16)
+                })
+            }
         }
+        .onAppear(perform: {
+            viewModel.didRegister = false
+        })
+        .padding(.top, -56)
+    }
+}
+
+extension RegistrationView {
+    func loadImage() {
+        guard let selectedImage = selectedImage else { return }
+        image = Image(uiImage: selectedImage)
     }
 }
 
@@ -102,3 +117,4 @@ struct RegistrationView_Previews: PreviewProvider {
         RegistrationView()
     }
 }
+
