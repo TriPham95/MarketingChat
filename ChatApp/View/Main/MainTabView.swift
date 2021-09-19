@@ -38,7 +38,7 @@ struct MainTabView: View {
                 }
                 .navigationTitle(tabTitle)
             }
-            .navigationViewStyle(StackNavigationViewStyle())
+//            .navigationViewStyle(StackNavigationViewStyle())
         } else {            // show failed to load or empty state view
         }
     }
