@@ -20,6 +20,7 @@
 		E532F09726F77CC90072B24A /* Settings in Resources */ = {isa = PBXBuildFile; fileRef = E532F09426F77CC90072B24A /* Settings */; };
 		E532F09826F77CC90072B24A /* Channels in Resources */ = {isa = PBXBuildFile; fileRef = E532F09526F77CC90072B24A /* Channels */; };
 		E532F09A26F77D780072B24A /* CustomSecureField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532F09926F77D780072B24A /* CustomSecureField.swift */; };
+		E532F09C26F77E7B0072B24A /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532F09B26F77E7B0072B24A /* LazyView.swift */; };
 		E534CE2C26E3AD600075A704 /* ProfilePhotoSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E534CE2B26E3AD600075A704 /* ProfilePhotoSelectorView.swift */; };
 		E534CE2E26E3B9780075A704 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E534CE2D26E3B9780075A704 /* ImageUploader.swift */; };
 		E548A0C826C809580043C121 /* ChatBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = E548A0C726C809580043C121 /* ChatBubble.swift */; };
@@ -81,6 +82,7 @@
 		E532F09426F77CC90072B24A /* Settings */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Settings; sourceTree = "<group>"; };
 		E532F09526F77CC90072B24A /* Channels */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Channels; sourceTree = "<group>"; };
 		E532F09926F77D780072B24A /* CustomSecureField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureField.swift; sourceTree = "<group>"; };
+		E532F09B26F77E7B0072B24A /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		E534CE2B26E3AD600075A704 /* ProfilePhotoSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoSelectorView.swift; sourceTree = "<group>"; };
 		E534CE2D26E3B9780075A704 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 		E548A0C726C809580043C121 /* ChatBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBubble.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				E5E7769326C806B600A3E1AB /* Extension.swift */,
 				E5318E4126EE331400A49BA0 /* Constants.swift */,
 				E532F09926F77D780072B24A /* CustomSecureField.swift */,
+				E532F09B26F77E7B0072B24A /* LazyView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				E5716E9D2699D0A900789633 /* SettingsView.swift in Sources */,
 				E548A0CA26C80B880043C121 /* MessageView.swift in Sources */,
 				E5716E9B2699D07200789633 /* ChannelsView.swift in Sources */,
+				E532F09C26F77E7B0072B24A /* LazyView.swift in Sources */,
 				E5716EA32699D13A00789633 /* ConversationsView.swift in Sources */,
 				E534CE2E26E3B9780075A704 /* ImageUploader.swift in Sources */,
 				E5F552D12693483B004149BF /* ContentView.swift in Sources */,
